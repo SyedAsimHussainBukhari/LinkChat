@@ -1,0 +1,215 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model FP.Models.User
+<!DOCTYPE html>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/bootstrap.js"></script>
+
+<link href="~/Content/User/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+ 
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+</head>
+
+
+<body property="og:image" background="~/Content/Images/fk.png">
+    @section UserPagesSection
+    {
+        <li> <a href="/User/Index"> <span class=""></span> Home </a></li>
+        <li class="active"> <a href="/User/Profile"> <span class=""></span> Profile </a></li>
+        <li> <a href="/User/Chat"> <span class=""></span> Chat </a></li>
+    <li> <a href="/User/RandomChat"> <span class=""></span> RandChat </a></li>
+
+    <li> <a href="/User/Conversation"> <span class=""></span> Conversations </a></li>
+
+        <li > <a href="/User/EditProfile"> <span class=""></span> Profile Edition </a></li>
+
+    }
+
+
+
+     
+    <div class="row">
+    
+        @{
+            int i = Model.UID;
+       
+         <div class="col-md-3  ">
+             <br />
+             <br/>
+             <img src="@("/Content/Images/DPs/" +i.ToString() + ".jpg")" alt="" 
+                  class="img-circle control-label  bg-danger " height="230" width="280" />
+
+            <br />
+             <div>
+                 <br />
+                 <p><h1><font color="DimGray"><strong>@Model.FName   </strong></font></h1> </p>
+                 
+                 <p><h4> @Model.City </h4> </p>
+             </div>
+        </div>
+ }
+        <p><h3> @Model.Email </h3> </p>
+
+
+        
+
+
+        <div class="col-xs-9">
+            <img src="@("/Content/Images/Cover/" +i.ToString() + ".jpg")" alt=""
+                 class="img-rounded control-label  bg-danger "
+                 height="280" width="800" />
+
+        </div>
+
+    </div>
+
+         
+
+
+
+        <div class="row panel-body">
+
+            <div class="list-group">
+
+
+
+                @foreach (FP.Models.ProfileData post in ViewBag.POSTS)
+                {
+
+                    <div class="row">
+
+
+                        <div class="col-xs-1">
+                        </div>
+                        <div class="col-xs-3">
+                            <br /><h3> <b>  @post.Subject </b></h3>
+                        </div>
+
+
+                        <div class="list-group-item comment_odd">
+
+                            <div class="col-md-7 container-fluid ">
+
+                                <br /><br />
+                                <div class="col-md-7 ">
+
+                                    @if (!post.Status.Equals("NO"))
+                                    {
+                                        <font class="bg-info ">
+                                            @post.Status
+                                        </font>
+
+                                        <br /> <br /><br />
+                                    }
+
+                                </div>
+                                <span class="badge">@post.PostTime</span>
+                              
+                                @{int activeUserID = (int)Session["UID"];}
+                                @if (post.UserID == activeUserID)
+                                {
+                                  <a href="/User/DeletePostInDB/@post.PID"
+                                     class="bg-warning">DELETE</a>
+                                }
+                                
+
+
+                                @if (!post.Image.Equals("NO"))
+                                {
+                                    <img src=@post.Image class="control-label img-rounded" height="350" width="450" />
+                                    <br />
+                                }
+
+
+
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="modal-footer h1">  </footer>
+                    
+                                        <div class="panel-body">
+                                            <div class="list-group">
+
+
+                         @foreach (FP.Models.Commenta u in post.Commentas)
+                              {
+                                  <div class="list-group-item">
+                                      <div class="row">
+                                   <div class="col-xs-1"></div>
+                                                             
+
+
+                                       <div class="col-xs-6">
+                                           <h3>
+                                               <a href="/User/VisitSomeOnesProfile/@u.UserID">
+                                                   @u.UserName
+                                               </a>
+                                           </h3>
+                                           <h4>   
+                                               @u.Words
+                                           </h4>
+                                   </div>
+
+
+                                                            <div class="col-xs-2">
+                                                                <span class="badge">
+                                                                 @u.CTime
+                                                                </span>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                }
+
+
+
+                                            </div>
+
+               <div class="list-group-item">
+                   <form action="/User/AddNewComment" method="post">
+                       <input type="hidden" name="PostID" value="@post.PID">
+                       <input type="text" placeholder="Enter New Comment" name="words" required size="70">
+                       <input type="submit" value="Comment" class="bg-primary" />
+                       </form>
+</div>
+
+
+                                            </div>
+
+
+
+                }
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <br /><br />
+
+
+
+
+
+
+</body>
+</html>

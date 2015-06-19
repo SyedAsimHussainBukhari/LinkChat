@@ -1,0 +1,62 @@
+﻿@{
+    Layout = @"~/Views/Shared/AdminLayout.cshtml"; 
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddNewUser</title>
+
+    <script>
+        function validateForm() {
+              alert("Name must be filled out");
+              
+        }
+    </script>
+</head>
+<body property="og:image" background="~/Content/Images/fk.png">
+    <h2> <strong class="bg-primery">User Registration Form</strong></h2>
+
+    @if ( !@ViewBag.Message.Equals("Empty"))
+    { 
+    <h4 class=@ViewBag.Status>@ViewBag.Message</h4>
+    }
+    
+
+    <div class="row">
+        <div class="col-xs-3">
+        </div>
+
+        <div class="col-xs-7">
+            <br /><br /><br /><br />
+
+            <form action="/Admin/AddUser" onsubmit="validateForm()">
+
+
+                Enter First Name: <input min ="3" type="text" required placeholder="ID" size="35" name="FName" /><br /><br />
+                Enter Last Name: <input min="3" type="text" placeholder="ID" size="35" name="LName" /><br /><br />
+
+                Enter Your Email ID: <input type="text" placeholder="ID" name="Email" size="35" /><br /><br />
+                Enter Your City: <input type="text" placeholder="City" size="35" name="City" /><br /><br />
+
+                Enter Password: <input min="5" type="password" placeholder="Password" size="35" name="Password" /><br /><br />
+                Enter Password Again: <input min="5" type="password" placeholder="Password" size="35" name="RPassword" /><br /><br />
+
+                <button type="submit"  value="Register" class="btn btn-primary"> Add User</button>
+            </form>
+
+        </div>
+
+        <div class="col-xs-2">
+           
+        </div>
+
+
+    </div>
+
+    <br /><br /><br /><br /><br /><br /><br />
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+﻿@{
+    Layout = @"~/Views/Shared/AdminLayout.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RemoveUsers</title>
+
+
+    <link rel="stylesheet" href="~/Content/User/layout.css" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap.js"></script>
+
+    <link href="~/Content/User/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/Content/User/css/sb-admin.css" rel="stylesheet">
+
+    <link href="~/Content/User/css/plugins/morris.css" rel="stylesheet">
+    <link href="~/Content/User/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+
+
+  
+    
+    <div class="row">
+       
+        <div class="col-lg-4">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> USERS</h2>
+                </div>
+
+                <div class="panel-body">
+                    <div class="list-group">
+                        <div class="list-group-item">
+
+                            <h2 class="alert_success"><font color="Black">@ViewBag.Message</font></h2>
+                            </div>
+                            @foreach (FP.Models.User u in Model)
+                            {
+                                <div class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-xs-1"></div>
+                                        <div class="col-xs-2">
+                                            <img src="@("/Content/Images/DPs/" + u.UID.ToString() + ".jpg")" alt="" height="100" width="100" />
+
+                                        </div>
+
+
+
+                                        <div class="col-xs-5">
+
+                                            <h3>
+                                                <a href="/User/VisitSomeOnesProfile/@u.UID">
+                                                    @u.FName
+                                                </a>
+                                            </h3>
+
+
+                                            <h4>@u.Email</h4>
+                                            <h5>   @u.City</h5>
+                                        </div>
+
+
+
+
+                                        <div class="col-xs-2">
+                                            <span class="badge">
+                                                <a href="/Admin/RemoveUserFromInDB/@u.UID">
+                                                    <font color="White">Remove This User</font>
+                                                </a>
+                                            </span>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+
+                </div>
+            </div>
+
+        </div>
+</body>
+</html>

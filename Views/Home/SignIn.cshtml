@@ -1,0 +1,97 @@
+﻿@model FP.Models.LoginUser
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/bootstrap.js"></script>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+
+
+
+<body property="og:image" background="~/Content/Images/fk.png">
+
+    @section SignInSection
+    {
+        <strong>
+             </strong>
+    }
+
+
+
+    @section ASignInSection
+    {
+        <li> <a href="/Home/About"> <span class=""></span> About </a></li>
+        <li> <a href="/Home/Contact"> <span class=""></span> Contact Us </a></li>
+        <li> <a href="/Home/Register"> <span class=""></span> Register </a></li>
+    <li class="active"> <a href="/Home/SignIn"> <span class=""></span> Sign In </a></li>
+    }
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+
+
+        <div class="col-xs-3">
+            <h2> <strong class="bg-primery">Log In Form</strong></h2>
+        </div>
+
+        <div class="col-xs-5">
+            <br /><br /><br /><br />
+
+        @using (Html.BeginForm("DoSignin", "Home", FormMethod.Post))
+        {
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                <table>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Email)</td>
+                        <td>   @Html.TextBoxFor(m => m.Email)</td>
+                    </tr>
+                     <tr><td></td><td></td></tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.Password)</td>
+                        <td> @Html.TextBoxFor(m => m.Password, new {  type="Password"})</td>
+                    </tr>
+            </table>
+                            <button type="submit" class="btn btn-primary"> Log In</button>
+        }
+            
+        </div>
+
+        <div class="col-xs-4">
+            <img src="~/Content/Images/1a.jpg" class="img-rounded" width="300" height="300" />
+
+        </div>
+
+
+    </div>
+    <br /><br /><br /><br /><br /><br />
+
+
+
+    <br />
+    <br />
+    <br />
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+﻿@{
+    Layout = @"~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ChangeTheme</title>
+</head>
+<body>
+    <div>
+        <h2>Choose New Theme For Your Website:</h2><br />
+        <div class="row">
+
+            <div class="col-xs-3"></div>
+
+            <div class="col-xs-6">
+                <form action="/Admin/SaveInDPTheme" method="post" enctype="multipart/form-data">
+                    <font color="BLACK" size="15">
+                        Edit WebTheme:
+                    </font> <input required type="file" name="image" />
+
+                    <button type="submit" class="btn btn-primary"> Update Theme</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

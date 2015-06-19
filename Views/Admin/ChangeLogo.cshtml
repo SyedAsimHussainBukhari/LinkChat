@@ -1,0 +1,31 @@
+﻿@{
+    Layout = @"~/Views/Shared/AdminLayout.cshtml"; 
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ChangeLogo</title>
+</head>
+<body>
+    <div>
+        <h2>Choose New Logo And Save:</h2><br/>
+        <div class="row">
+
+            <div class="col-xs-3"></div>
+
+            <div class="col-xs-6">
+                <form action="/Admin/SaveInDPLogo" method="post" enctype="multipart/form-data">
+                    <font color="BLACK" size="15"> 
+                    Edit WebLogo:</font> <input required type="file" name="image" />
+
+                    <button type="submit" class="btn btn-primary"> Update Logo</button>
+                </form>
+
+            </div>
+            </div>
+    </div>
+</body>
+</html>

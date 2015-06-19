@@ -1,0 +1,104 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+
+<meta name="viewport" content="width=device-width" />
+
+<link rel="stylesheet" href="~/Content/User/layout.css" type="text/css" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/bootstrap.js"></script>
+
+<link href="~/Content/User/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Chat</title>
+</head>
+
+
+<body property="og:image" background="~/Content/Images/fk.png">
+    @section UserPagesSection
+    {
+        <li> <a href="/User/Index"> <span class=""></span> Home </a></li>
+        <li > <a href="/User/Profile"> <span class=""></span> Profile </a></li>
+    <li class="active"> <a href="/User/Chat"> <span class=""></span> Chat </a></li>
+    <li> <a href="/User/RandomChat"> <span class=""></span> RandChat </a></li>
+
+    <li> <a href="/User/Conversation"> <span class=""></span> Conversations </a></li>
+
+        <li> <a href="/User/EditProfile"> <span class=""></span> Profile Edition </a></li>
+
+    }
+
+
+    
+   
+    <div class="row">
+     
+        
+            <div class="col-xs-3"> 
+                <p class="list-group-item   active">Your Links</p>
+                    <div class="list-group">
+  
+@foreach (FP.Models.User u in Model)
+{
+
+    <a href="/User/LoadChatWithSpecificLink/@u.UID" class="list-group-item ">
+        @{ String name = @u.FName + " "+@u.LName;
+                       
+        }
+       @name </a>
+}
+                </div>
+            </div>
+
+
+
+            <div id="comments" class="col-xs-8">
+                <h2>Linking Via Messages</h2>
+
+
+                <ul class="commentlist">
+
+
+
+
+                    <li class="comment_odd">
+
+                        <div class="author">
+                           
+                            <span class="name">
+                                Let's Chat. Select a Frind and get The Link Strongest :D
+                            </span>
+                        </div>
+
+                        <div class="submitdate">
+                            <span class="badge">@DateTime.Now</span>
+                        </div>
+
+                        <br />
+                        <img src="~/Content/Images/1a.jpg" height="300" width="700" />
+
+                    </li>
+
+
+                </ul>
+
+
+
+
+            </div>
+
+
+        </div>
+    
+</body>
+
+
+</html>

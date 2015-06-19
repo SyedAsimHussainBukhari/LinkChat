@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="~/Content/bootstrap.js"></script>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact</title>
+</head>
+<body background="~/Content/Images/fk.png">
+
+
+    @section ContactSection
+    {
+        <strong>
+               </strong>
+    }
+
+
+
+    @section AContactSection
+    {
+    <li> <a href="/Home/About"> <span class=""></span> About </a></li>
+    <li class="active"> <a href="/Home/Contact"> <span class=""></span> Contact Us </a></li>
+    <li> <a href="/Home/Register"> <span class=""></span> Register </a></li>
+    <li> <a href="/Home/SignIn"> <span class=""></span> Sign In </a></li>
+     }
+
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <h2> <strong class="bg-primery">  Fill This Contact Form:</strong></h2>
+            </div>
+        </div>
+
+
+
+        <div class="col-xs-3">
+
+            <br /><br /><br />
+            Enter Name: <input type="text" placeholder="Name" size="35" /><br /><br />
+            Enter Email: <input type="text" placeholder="ID" size="35" /><br /><br />
+
+            Enter Subject: <input type="text" placeholder=" Subject" size="35" /><br /><br />
+
+            Your Message: <textarea rows="9" cols="40" placeholder="Enter Your Message Here.."></textarea>
+            <button type="submit" width="80" class="btn btn-primary"> Log In</button>
+
+
+
+        </div>
+
+
+        <div class="col-xs-4">
+            <img src="~/Content/Images/1a.jpg" class="img-rounded" width="250" height="250" />
+
+        </div>
+        <br />
+    </div>
+</body>
+</html>

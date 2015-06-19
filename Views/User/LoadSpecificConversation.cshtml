@@ -1,0 +1,194 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+
+<meta name="viewport" content="width=device-width" />
+
+<link rel="stylesheet" href="~/Content/User/layout.css" type="text/css" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/bootstrap.js"></script>
+
+<link href="~/Content/User/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CONVERSATION</title>
+</head>
+
+
+<body property="og:image" background="~/Content/Images/fk.png">
+    @section UserPagesSection
+    {
+        <li> <a href="/User/Index"> <span class=""></span> Home </a></li>
+        <li> <a href="/User/Profile"> <span class=""></span> Profile </a></li>
+        <li > <a href="/User/Chat"> <span class=""></span> Chat </a></li>
+
+        <li> <a href="/User/RandomChat"> <span class=""></span> RandChat </a></li>
+        <li> <a href="/User/Conversation"> <span class=""></span> Conversations </a></li>
+
+        <li> <a href="/User/EditProfile"> <span class=""></span> Profile Edition </a></li>
+
+    }
+
+    <div class="row">
+
+
+        <div class="col-xs-3">
+            <p class="list-group-item   active">Your Conversation</p>
+            <div class="list-group">
+
+                @foreach (FP.Models.Conversation c in Model)
+                {
+
+                    <a href="/User/LoadSpecificConversation/@c.ConversationID" class="list-group-item ">
+
+                        @c.ConvoName
+                    </a>
+                }
+            </div>
+        </div>
+
+
+        <div id="comments" class="col-xs-8">
+            <p  ><h3><font color="RED" >  @ViewBag.Notify</font></h3></p><br />
+
+            <h2>@ViewBag.ConvoName</h2>
+            
+            <div>
+                <form action="/User/AddMemberToConvo/@ViewBag.ConvoID" method="post">
+                    <input type="text" name="frndEmail" placeholder="Enter Friend Email" />    
+                    <input type="submit" value="Add" />                 
+                </form>
+                </div>
+
+                       <ul class="commentlist">
+
+                @if (ViewBag.MessagesList!= null)
+                {
+
+
+                    foreach (FP.Models.CMessage m in ViewBag.MessagesList)
+                    {
+                        String styleClass = "";
+                       // String senderName = "";
+                        if (m.SenderName == (String)Session["FName"])
+                        {
+                            styleClass = "comment_even";
+                            // senderName = (String)Session["Fname"];
+                        }
+                        else
+                        {
+                            //"@("/Content/Images/DPs/" + u.UID.ToString() + ".jpg")"
+                            styleClass = "comment_odd";
+                            // senderName = @ViewBag.ChatWithNAME;
+                        }
+
+
+                <li class=@styleClass>
+                    <div class="author">
+                        <img src="@("/Content/Images/DPs/" +m.SenderID.ToString() + ".jpg")"
+                             height="50" width="50" />
+
+
+                        <span class="name">
+                            <a href="#">@m.SenderName</a>
+                        </span>
+                    </div>
+
+
+
+                   
+
+                             @if (!m.Statement.Equals("NO"))
+                    {
+                       
+
+                            <p>
+                                @m.Statement
+                            </p>
+
+                     }
+                     @if(!m.MsgImage.Equals("NO"))//pic msg
+                     {
+                         <br />
+                         <img src=@m.MsgImage height="300" width="400" />
+
+                     }
+
+                    <div class="submitdate">
+                        <span class="badge">@m.MessageTime</span>
+                    </div>
+
+                   
+                </li>
+                    }
+
+
+                }
+
+
+            </ul>
+
+
+
+            <div class="row">
+
+                <h2>Write Your Reply</h2>
+
+                <div id="respond" class="col-xs-6">
+                    <form action="/User/SaveCMessageInDB" method="post" enctype="multipart/form-data">
+
+                        <input type="hidden" name="SenderID" value=@Session["UID"]>
+                        <input type="hidden" name="ConvoID" value=@ViewBag.ConvoID>
+
+                        <p>
+                            <label style="display:none;"><h1>Message</h1></label>
+                            <textarea name="Statement" required cols="50" rows="10"></textarea>
+
+                        </p>
+                        <br/>
+                        Upload Image: <input type="file"  name="image" />
+
+
+                        <p>
+                            <input name="submit" type="submit" id="submit" value="Submit Form" />
+                            &nbsp;
+                            <input name="reset" type="reset" id="reset" tabindex="5" value="Reset Form" />
+                        </p>
+                    </form>
+                </div>
+
+                <div class="col-xs-1"></div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <div class="col-xs-3">
+                     
+                         
+                       
+                     
+                     
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+</body>
+</html>

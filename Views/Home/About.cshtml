@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/bootstrap.js"></script>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>About</title>
+</head>
+
+<body background="~/Content/Images/fk.png">
+
+
+    @section AboutSection
+    {
+        <strong>
+            </strong>
+    }
+    @section AAboutSection
+    {
+        <li class="active"> <a href="/Home/About"> <span class=""></span> About </a></li>
+        <li> <a href="/Home/Contact"> <span class=""></span> Contact Us </a></li>
+        <li > <a href="/Home/Register"> <span class=""></span> Register </a></li>
+        <li> <a href="/Home/SignIn"> <span class=""></span> Sign In </a></li>
+    }
+    <div class="row">
+        <div class="col-xs-3">
+            <h1><font color="BLUE">About LinkChat</font></h1>
+            
+        </div>
+       
+
+            <div class="col-xs-5">
+                <h2> <strong class="bg-primery">LinkChat</strong></h2>
+                <h2>Link to Chat....</h2>
+                @ViewBag.Words
+            </div>
+            <br /><br /><br /><br /><br /><br /><br /><br />
+      
+
+            <div class="col-xs-4">
+                <img src="~/Content/Images/1a.jpg" class="img-rounded" width="250" height="250" />
+
+            </div>
+        <br />
+        
+</div>
+    <br />
+    <br />
+    <br />
+</body>
+</html>

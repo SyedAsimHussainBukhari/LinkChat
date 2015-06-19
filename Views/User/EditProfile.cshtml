@@ -1,0 +1,144 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/bootstrap.js"></script>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+</head>
+
+
+<body property="og:image" background="~/Content/Images/fk.png">
+    @section UserPagesSection
+    {
+        <li> <a href="/User/Index"> <span class=""></span> Home </a></li>
+        <li> <a href="/User/Profile"> <span class=""></span> Profile </a></li>
+        <li> <a href="/User/Rand"> <span class=""></span> Chat </a></li>
+    <li> <a href="/User/RandomChat"> <span class=""></span> RandChat </a></li>
+
+    <li> <a href="/User/Conversation"> <span class=""></span> Conversations </a></li>
+
+    <li class="active"> <a href="/User/EditProfile"> <span class=""></span> Profile Edition </a></li>
+
+    }
+
+
+
+
+
+    <div class="row">
+        <div class="col-xs-1"> </div>
+
+
+        <div class="col-md-3  ">
+            
+@{
+    int i = Model.UID;
+
+            <img src="@("/Content/Images/DPs/" + i+ ".jpg")" alt="" class=" control-label  bg-danger " height="250" width="250" />
+            
+            <br />
+    String name = Model.FName + " " + Model.LName; 
+}
+
+          
+            
+            
+              <form action="/User/SaveInDP" method="post" enctype="multipart/form-data">
+                <font color="BLUE"> Edit Image:</font> <input required type="file" name="image" />
+
+                <button type="submit" class="btn btn-primary"> Update Image</button>
+            </form>
+        </div>
+
+
+
+
+        <div>
+
+            <form action="/User/SaveInDPCover" method="post" enctype="multipart/form-data">
+                <font color="BLUE"> Edit Cover Image:</font> <input required type="file" name="image" />
+
+                <button type="submit" class="btn btn-primary"> Update Image</button>
+            </form>        
+            </div>
+        <div class="col-xs-5">
+            <br />
+            <p><h1><font color="DimGray"><strong>@name </strong></font></h1> </p>
+            <p><h3> @Model.Email</h3> </p>
+            <p><h4> @Model.City </h4> </p>
+        </div>
+
+
+        <div class="col-xs-4"> </div>
+
+    </div>
+
+    <br /><br />
+
+
+   
+    
+    
+     <div class="row">
+
+
+
+        <div class="col-xs-1"> </div>
+
+
+        <div class="col-xs-2">
+            <h2> Add New Information</h2>
+        </div>
+
+
+
+        <div class="col-md-8 ">
+
+            <br /><br />
+
+            <form action="~/User/AddPostFromFoam" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="UserID" value=@Model.UID>
+
+                subject
+                <input type="text" required placeholder="Enter Subject Here" size="40" name="Subject" /><br /><br />
+                Information: <br />
+                <textarea placeholder="Wirte Here"  name="Status" rows="6" cols="50"></textarea>
+
+                <font color="BLUE"> Edit Image:</font> <input  type="file" name="Image" />
+                <select name="Privacy">
+                    <option value="OnlyMe">Only Me</option>
+                    <option value="Public">Public</option>
+                    <option value="Friends">Friends</option>
+                </select>
+                <br /><br />
+                <button type="submit" class="btn btn-primary"> Share</button>
+
+            </form>
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+    <br /><br />
+   
+
+
+
+
+
+</body>
+</html>

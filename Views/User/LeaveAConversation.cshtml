@@ -1,0 +1,174 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<FP.Models.Conversation>
+<!DOCTYPE html>
+
+
+<meta name="viewport" content="width=device-width" />
+
+<link rel="stylesheet" href="~/Content/User/layout.css" type="text/css" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/bootstrap.js"></script>
+
+<link href="~/Content/User/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/User/css/sb-admin.css" rel="stylesheet">
+<link href="~/Content/User/css/plugins/morris.css" rel="stylesheet">
+<link href="~/Content/User/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+
+
+<body property="og:image" background="~/Content/Images/fk.png">
+    @section UserPagesSection
+    {
+        <li class="active"> <a href="/User/Index"> <span class=""></span> Home </a></li>
+        <li> <a href="/User/Profile"> <span class=""></span> Profile </a></li>
+        <li> <a href="/User/Chat"> <span class=""></span> Chat </a></li>
+        <li> <a href="/User/RandomChat"> <span class=""></span> RandChat </a></li>
+
+        <li> <a href="/User/Conversation"> <span class=""></span> Conversations </a></li>
+
+        <li> <a href="/User/EditProfile"> <span class=""></span> Profile Edition </a></li>
+
+    }
+
+
+    <div class="row">
+        <div class="col-xs-1">
+
+
+        </div>
+
+        <div id="wrapper" class="col-xs-12">
+
+            <div class="col-xs-4 collapse navbar-collapse navbar-ex1-collapse">
+
+                <ul class="nav navbar-nav side-nav">
+
+                    <li>
+                        <a href="/User/ViewLinks">
+                            <i class="fa fa-fw fa-users"></i>
+                            Your Links
+                        </a>
+                    </li>
+
+
+
+                    <li>
+                        <a href="/User/AddNewLink"><i class="fa fa-fw fa-user-md"></i> Add new Link</a>
+                    </li>
+
+
+                    <li>
+                        <a href="/User/RemoveALink">
+                            <i class="fa fa-fw fa-user"></i>
+                            <font color="grey">Remove a Link</font>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/User/CreateNewConversation"><i class="fa fa-fw fa-edit"></i> Create New Conversation</a>
+                    </li>
+                    <li>
+                        <a href="/User/LeaveAConversation"><i class="fa fa-fw fa-comment"></i> Leave a Conversation</a>
+                    </li>
+                    
+                </ul>
+            </div>
+
+
+
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h1 class="page-header">
+                               You Have Joined The following Conversations <small></small>
+                            </h1>
+
+                        </div>
+                        <div class="col-lg-4">
+
+ 
+                        </div>
+                    </div>
+
+
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-4">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Conversations</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="list-group">
+
+                                        @foreach (FP.Models.Conversation u in Model)
+                                        {
+                                            <div class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="col-xs-2">
+                                                        <img src=@u.ConvoImage alt="" height="100" width="100" />
+
+                                                    </div>
+
+                                                 
+
+
+                                                    <div class="col-xs-5">
+
+                                                        <h3>
+                                                            <a href="/User/LoadSpecificConversation/@u.ConversationID">
+                                                                @u.ConvoName
+                                                            </a>
+                                                        </h3>
+ 
+                                                    </div>
+
+
+                                                    <div class="col-xs-2">
+                                                        <span class="badge">
+                                                            <a href="/User/DeleteConversationLinkFromDB/@u.ConversationID">
+                                                                <font color="White">Leave Conversation</font>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+    </div>
+    <br />
+    <br />
+
+
+
+
+</body>
+</html>

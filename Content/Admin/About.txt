@@ -1,0 +1,10 @@
+﻿
+            <h2>Link to Chat....</h2>
+            This website provides a social networking, in which users create links, chat with their beloved ones, view their profiles, edit own profiles, manage account etc.
+            The distinguishing feature of this site are RandChat and Criterian Searching.
+            In <strong> RandChat </strong>, users would be able to chat with randomly selected people from their surroundings,
+            this would create a way to connect with more and more peoples of your sorrounding.
+            In <strong>Criterian Chat</strong>,  user would be able to search people of their taste, by some criteria of their interest.
+
+           <br /><br /><br /><br /><br /><br /><br /><br />
+

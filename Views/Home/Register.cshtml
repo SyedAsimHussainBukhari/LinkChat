@@ -1,0 +1,174 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Content/bootstrap.js"></script>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+
+<body property="og:image" background="~/Content/Images/fk.png">
+
+    <div class="row">
+        <div class="col-xs-3">
+            <h2> <strong class="bg-primery">Registration Form</strong></h2>
+        </div>
+
+        <div class="col-xs-5">
+            <br /><br /><br /><br />
+
+            <form action="/Home/AddUser">
+
+                <table>
+                    <tr>
+                        <td>
+                            Enter First Name:
+                        </td>
+                        <td>
+                            <input type="text" required placeholder="ID" Required size="35" name="FName" />
+                        </td>
+                    </tr>  
+
+
+
+            <tr>
+                <td>    Enter Last Name: </td>
+                <td>  <input type="text" placeholder="ID" required size="35" name="LName" /></td>
+                   </tr>
+
+                    </table>
+
+                    <div>
+
+                       Enter A User ID: 
+                        <input type="text" placeholder="ID" id="UserName" required name="Email" size="35" /><br /><br />
+                      
+
+                        <input type="button" id="b1" value="Check" />
+                        <div id="result"></div>
+
+                        @Scripts.Render("~/bundles/jquery")
+                        <script>
+
+                            $(document).ready(function () {
+
+                                $('#checking').hide();
+
+                                $('#b1').click(function () {
+
+                                    var userName = $('#UserName').val();
+
+                                    //alert('User Name ='+ userName);
+                                    $('#checking').show();
+                                    $.getJSON("/home/CheckUserName?UserName=" + userName, function (data) {
+                                        $('#checking').hide();
+                                        if (data) {
+                                            $('#result').text("User already exists");
+
+                                        }
+                                        else {
+                                            $('#result').text("User Name is available");
+                                        }
+                                    });
+
+                                });
+
+                            });
+                        </script>
+                   
+                     </div>
+
+
+
+
+
+
+
+
+
+                <table>
+
+                    <tr>
+                        <td> Enter Your City: </td>
+                        <td> <input type="text" placeholder="City" required  size="35" name="City" /> </td>
+                    </tr>
+
+                  <tr> 
+                      <td> Enter Password: </td>
+                  <td>  <input type="password" placeholder="Password" required  size="35" name="Password" />
+                    </td>
+                      </tr>
+
+                  
+                    <tr>
+                        <td> Enter Password Again:</td>
+                        <td>  <input type="password" placeholder="Password" required size="35" name="RPassword" /></td>
+                    </tr> 
+
+                   
+                    <tr>
+                        <td>
+                            <button type="submit" value="Register"  class="btn btn-primary"> Log In</button>
+                        </td>
+                    </tr>
+
+
+                </table>
+                
+                 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="col-xs-4">
+            <img src="~/Content/Images/1a.jpg" class="img-rounded" width="300" height="300" />
+
+        </div>
+
+
+    </div>
+
+    <br /><br /><br /><br /><br /><br /><br />
+
+
+    @section RegisterSection
+    {
+        <strong>
+             </strong>
+    }
+
+
+    @section ARegisterSection
+    {
+        <li> <a href="/Home/About"> <span class=""></span> About </a></li>
+        <li > <a href="/Home/Contact"> <span class=""></span> Contact Us </a></li>
+        <li class="active"> <a href="/Home/Register"> <span class=""></span> Register </a></li>
+        <li> <a href="/Home/SignIn"> <span class=""></span> Sign In </a></li>
+    }
+
+</body>
+
+
+</html>

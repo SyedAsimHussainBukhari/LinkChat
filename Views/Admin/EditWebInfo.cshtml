@@ -1,0 +1,48 @@
+﻿@{
+    Layout = @"~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditWebInfo</title>
+</head>
+<body>
+    <div>
+        <article class="module width_3_quarter">
+
+            <h3 class="tabs_involved">@Session["ABOUT"]</h3>
+
+
+
+    </article><!-- end of content manager article -->
+  
+</div>
+      
+    <br />
+    <br />
+
+    <br /> 
+    
+    <div class="row">
+        
+        <div class="col-xs-2"></div>
+        
+        <div class="col-xs-6">
+            <br />
+
+            <br /> 
+             <form action="/Admin/UpdateWebInfoInDB">
+                <label >Updation Form:</label>
+                 <textarea type="text" rows="10" cols="100" name="UpdatedAbout" required></textarea>
+                <input type="submit" value="Update" />
+            </form>
+        </div>
+       
+
+        <div class="col-xs-1"></div>
+        </div>
+</body>
+</html>
